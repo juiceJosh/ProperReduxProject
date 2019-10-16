@@ -1,0 +1,30 @@
+import {LOGIN, DELETE_LOG, USER_INPUT, PASSWORD_INPUT} from '../actions/actionTypes'
+
+const initialState = {
+    // user: "",
+    // password: "",
+    credentials: [
+        {id: 1, user: 'Juice', password: '1234567890' },
+        {id: 2, user: 'Box', password: '0987654321' },
+    ]
+}
+
+export default (state=initialState, action) => {
+    switch(action.type){
+        case LOGIN:
+            const addLog = state.credentials
+            const {user, password} = action.payload
+            return {
+                ...state, 
+                credentials: addLog.concat({id: addLog.length + 1, user: user, password: password})
+            }
+        case DELETE_LOG:
+            const delLog  = state.credentials
+            return {    
+                ...state,
+                credentials: delLog.filter(logId => logId.id !== action.payload)
+            }   
+        default:
+            return state;
+    }
+}
