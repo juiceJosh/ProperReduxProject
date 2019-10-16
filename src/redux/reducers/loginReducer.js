@@ -9,15 +9,20 @@ const initialState = {
     ]
 }
 
+//https://daveceddia.com/react-redux-immutability-guide/
+
 export default (state=initialState, action) => {
     switch(action.type){
         case LOGIN:
             const addLog = state.credentials
             const {user, password} = action.payload
+            const userAdded = {id: addLog.length + 1, user, password}
+            console.log(userAdded)
+            console.log(addLog)
             return {
-                ...state, 
-                credentials: addLog.concat({id: addLog.length + 1, user: user, password: password})
+                credentials: [...addLog,userAdded ]
             }
+                
         case DELETE_LOG:
             const delLog  = state.credentials
             return {    
