@@ -8,7 +8,7 @@ const initialState = {
         {id: 2, user: 'Box', password: '0987654321' },
     ]
 }
-
+//https://daveceddia.com/react-redux-immutability-guide/
 export default (state=initialState, action) => {
     switch(action.type){
         case LOGIN:
